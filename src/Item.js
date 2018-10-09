@@ -54,7 +54,7 @@ export class Item extends Component {
                         <form  onSubmit={(event)=>{
                             event.preventDefault();
                              this.props.addComment(this.state.input,this.props.feedItem.itemKey)
-                             this.state.input = ''}}>
+                             this.setState({ input: '' })}}>
                             <input placeholder='Reply to comment...' className='reply_box'
                             onChange={this.handleChange} value={this.state.input}></input>
                         </form>

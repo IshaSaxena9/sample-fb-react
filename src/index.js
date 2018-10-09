@@ -12,52 +12,63 @@ let initialState = {
 }
 
 const filterReducer = (state=initialState, action) => {
+    var newState;
     switch(action.type)
     {
         case 'Text only':
-        state={
+        newState={
             ...state,
             feed_data: state.filter_data.filter((item) => {
                 return item.image === ''
             })
         }
-        break;
+        return newState;
 
         case 'Images only':
-        state={
+        newState={
             ...state,
             feed_data: state.filter_data.filter((item) => {
                 return item.image !== ''
             })
         }
-        break;
+        return newState;
 
         case 'No items':
-        state={
+        newState={
             ...state,
             feed_data: []
         }
-        break;
+        return newState;
 
         default:
-        state={
+        newState={
             ...state,
             feed_data: state.filter_data
         }
+        return newState;
     }
-    return state;
 }
 
 const reducer = (state=initialState, action) => {
+    var newState;
+    var newdata=state.feed_data;
     switch(action.type) 
     {
         case 'Like':
-            state.feed_data[action.payload-1].likes=parseInt(state.feed_data[action.payload-1].likes)+1;
-            break;
+            newdata[action.payload-1].likes=parseInt(state.feed_data[action.payload-1].likes)+1;
+            newState = {
+                ...state,
+                feed_data: newdata
+            }
+            return newState;
 
         case 'Dislike':
-            state.feed_data[action.payload-1].likes=parseInt(state.feed_data[action.payload-1].likes)-1;
-            break;
+            newdata[action.payload-1].likes=parseInt(state.feed_data[action.payload-1].likes)-1;
+            newState = {
+                ...state,
+                feed_data: newdata
+            }
+            return newState;
 
         case 'comment':
             let newComment = {

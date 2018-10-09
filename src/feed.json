@@ -4,6 +4,7 @@
         "item_description" : "This is a text only item",
         "image" : "",
         "likes" : "10",
+        "isLiked": "false",
         "comments" : [
             {
             "comment" : "This is a comment",
@@ -20,6 +21,7 @@
         "item_description" : "",
         "image" : "./assets/image.png",
         "likes" : "20",
+        "isLiked": "false",
         "comments" : [
             {
             "comment" : "This is a comment",
